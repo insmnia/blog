@@ -8,6 +8,7 @@ from app.models import User, Post
 from app import db
 from app.email import send_password_reset_email
 from flask_babel import _, get_locale
+from guess_language import guess_language as gl
 
 @app.before_request
 def before_request():
@@ -24,7 +25,10 @@ def index():
     form = PostForm()
     
     if form.validate_on_submit():
-        post = Post(body=form.post.data,author=current_user)
+        lang = gl(form.post.data)
+        if lang == 'UNKNOWN' or len(lang)>5:
+            lang = ''
+        post = Post(body=form.post.data,author=current_user,language=lang)
         db.session.add(post)
         db.session.commit()
         flash(_('Your post is now live!'))
