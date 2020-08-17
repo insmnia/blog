@@ -13,6 +13,6 @@ class Config(object):
     MAIL_USERNAME = "teamspirit3209@gmail.com"
     MAIL_PASSWORD = "2787831ra"
     ADMINS = ['studyformcbp1906@gmail.com']
-    MS_TRANSLATOR_KEY = "31eb21cf642f4ac994a09665d748972f"
+    MS_TRANSLATOR_KEY = "faeeafc8032f48ee91662aa0e8b2cc3b"
     POSTS_PER_PAGE=25
     LANGUAGES = ['en','es','ru']
