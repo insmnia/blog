@@ -1,0 +1,65 @@
+2020-08-13 14:13:12,311 ERROR: Exception on / [GET] [in c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "E:\python_projects\flask-project-one\app\routes.py", line 40, in index
+    return render_template('index.html', title='Home Page',form=form,
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\flask\templating.py", line 137, in render_template
+    return _render(
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "E:\python_projects\flask-project-one\app\templates\index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "E:\python_projects\flask-project-one\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block "body"
+    {% block navbar %}
+  File "E:\python_projects\flask-project-one\app\templates\base.html", line 21, in block "navbar"
+    <li><a href="{{ url_for('index') }}">{{ _('Home') }}</a></li>
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\jinja2\ext.py", line 144, in _gettext_alias
+    return __context.call(__context.resolve("gettext"), *args, **kwargs)
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\jinja2\ext.py", line 150, in gettext
+    rv = __context.call(func, __string)
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\flask_babel\__init__.py", line 110, in <lambda>
+    lambda x: get_translations().ugettext(x),
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\flask_babel\__init__.py", line 221, in get_translations
+    [get_locale()],
+  File "c:\users\tarlo\appdata\local\programs\python\python38\lib\site-packages\flask_babel\__init__.py", line 251, in get_locale
+    rv = babel.locale_selector_func()
+  File "E:\python_projects\flask-project-one\app\__init__.py", line 62, in get_locate
+    return es
+NameError: name 'es' is not defined
+2020-08-13 14:13:30,412 INFO: Microblog startup [in E:\python_projects\flask-project-one\app\__init__.py:56]
+2020-08-13 14:25:42,886 INFO: Microblog startup [in E:\python_projects\flask-project-one\app\__init__.py:56]
+2020-08-13 14:26:51,832 INFO: Microblog startup [in E:\python_projects\flask-project-one\app\__init__.py:56]
+2020-08-13 14:27:13,804 INFO: Microblog startup [in E:\python_projects\flask-project-one\app\__init__.py:56]
+2020-08-13 14:27:44,741 INFO: Microblog startup [in E:\python_projects\flask-project-one\app\__init__.py:56]
+2020-08-13 14:29:29,283 INFO: Microblog startup [in E:\python_projects\flask-project-one\app\__init__.py:56]
+2020-08-13 14:29:41,592 INFO: Microblog startup [in E:\python_projects\flask-project-one\app\__init__.py:56]
+2020-08-13 14:29:55,997 INFO: Microblog startup [in E:\python_projects\flask-project-one\app\__init__.py:56]
+2020-08-17 00:08:29,678 INFO: Microblog startup [in E:\python_projects\flask-project-one\app\__init__.py:56]
+2020-08-17 00:11:37,138 INFO: Microblog startup [in E:\python_projects\flask-project-one\app\__init__.py:56]
