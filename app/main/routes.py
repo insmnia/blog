@@ -8,7 +8,7 @@ from app import db
 from app.models import User, Post
 from app.translate import translate
 from app.main import bp
-from app.main.forms import PostForm, EditProfileForm
+from app.main.forms import PostForm, EditProfileForm, EditPostForm, EmptyForm
 
 
 @bp.before_app_request
@@ -142,6 +142,16 @@ def translate_text():
                                       request.form['source_language'],
                                       request.form['dest_language'])})
 
+
+@bp.route('/edit_post',methods=['GET','POST'])
+@login_required
+def edit_post():
+    form = EditPostForm()
+    if form.validate_on_submit():
+        pass
+    
+    elif request.method == 'GET':
+        pass
 
 # @bp.route('/search')
 # @login_required
