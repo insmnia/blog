@@ -37,7 +37,7 @@ class User(UserMixin, db.Model):
                                         backref='recipient', lazy='dynamic')
     last_message_read_time = db.Column(db.DateTime)
 
-    nofitications = db.relationship('Notification',backref="user",lazy='dynamic')
+    notifications = db.relationship('Notification',backref="user",lazy='dynamic')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -83,7 +83,7 @@ class User(UserMixin, db.Model):
         return Message.query.filter_by(recipient=self).filter(Message.timestamp > last_read_time).count()
 
     def add_notification(self,name,data):
-        self.nofitications.filter_by(name=name).delete()
+        self.notifications.filter_by(name=name).delete()
         n = Notification(name=name,payload_json=json.dumps(data),user=self)
         db.session.add(n)
         return n
