@@ -31,7 +31,7 @@
                             {% set new_messages = current_user.new_messages() %}
                             <span id="message_count" class="badge"
                                   style="visibility: {% if new_messages %}visible
-                                                     {% else %}hidden {% endif %};">
+                                                     {% else %} hidden {% endif %};">
                                 {{ new_messages }}
                             </span>
                         </a>
@@ -77,18 +77,18 @@
         //         $(destElem).text("{{ _('Error: Could not contact server.') }}");
         //     });
         // }
-        $(function () {
+        $(()=>{
             var timer = null;
             var xhr = null;
             $('.user_popup').hover(
-                function(event) {
+                (event)=>{
                     // mouse in event handler
                     var elem = $(event.currentTarget);
-                    timer = setTimeout(function() {
+                    timer = setTimeout(()=>{
                         timer = null;
                         xhr = $.ajax(
                             '/user/' + elem.first().text().trim() + '/popup').done(
-                                function(data) {
+                                (data)=>{
                                     xhr = null;
                                     elem.popover({
                                         trigger: 'manual',
@@ -102,7 +102,7 @@
                             );
                     }, 1000);
                 },
-                function(event) {
+                (event)=>{
                     // mouse out event handler
                     var elem = $(event.currentTarget);
                     if (timer) {
@@ -124,5 +124,22 @@
             $('#message_count').text(n);
             $('#message_count').css('visibility',n ? 'visible':'hidden');
         }
+
+        {% if current_user.is_authenticated %}
+        $(()=>{
+            var since = 0;
+            setInterval(() => {
+                $.ajax('{{ url_for('main.notifications') }}?since='+since).done(
+                    (notifications)=>{
+                        for (let i=0; i< notifications.length;i++){
+                            if (notifications[i].name == 'unread_message_count')
+                                set_message_count(notifications[i].data);
+                            since=notifications[i].timestamp;
+                        }
+                    }
+                );
+            }, 10000);
+        })
+        {% endif %}
     </script>
 {% endblock %}
