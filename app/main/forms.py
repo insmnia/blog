@@ -37,3 +37,8 @@ class EditPostForm(FlaskForm):
     post = TextAreaField(_('Text'),validators=[DataRequired()])
     submit = SubmitField(_('Edit'))
     delete_post = SubmitField(_('Delete'))
+
+
+class MessageForm(FlaskForm):
+    message = TextAreaField(_('Message'),validators=[DataRequired(),Length(min=0,max=140)])
+    submit = SubmitField(_('Submit'))
