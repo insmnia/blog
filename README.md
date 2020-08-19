@@ -4,5 +4,4 @@ This is test-application based on Flask/python made on "Flask Web Development: D
 #### Upgrade messages(add message history in message-writing block)
 ---
 ***Functions***
-1. #### Change password
-2. #### Edit Post
+1. #### Edit Post
