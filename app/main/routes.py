@@ -8,7 +8,7 @@ from app import db
 from app.models import User, Post, Message, Notification
 from app.translate import translate
 from app.main import bp
-from app.main.forms import PostForm, EditProfileForm, EditPostForm, EmptyForm, MessageForm
+from app.main.forms import PostForm, EditProfileForm, EditPostForm, EmptyForm, MessageForm,ChangePasswordForm
 
 
 @bp.before_app_request
@@ -93,6 +93,24 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title=_('Edit Profile'),
                            form=form)
+
+
+@bp.route('/change_password',methods=['GET','POST'])
+@login_required
+def change_password():
+    form = ChangePasswordForm()
+    if form.validate_on_submit():
+        if current_user.check_password(form.current_password.data):
+            current_user.set_password(form.new_password.data)
+            db.session.commit()
+            flash(_("Your password has been changed."))
+            return redirect(url_for('main.user',username=current_user.username))
+            
+        else:
+            flash(_("Password is incorrect"))
+            return redirect(url_for('main.user',username=current_user.username))
+    
+    return render_template('change_password.html',title=_('Change Password'),form=form)
 
 
 @bp.route('/follow/<username>', methods=['POST'])
